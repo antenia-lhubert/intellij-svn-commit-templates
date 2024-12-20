@@ -1,0 +1,46 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>fr.antenia.svn-commit-templates</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Svn-commit-templates</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="leopold.hubert@antenia.fr" url="https://antenia.fr">Antenia</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    Ajoute des templates au formulaire de commit SVN
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <depends>com.intellij.modules.vcs</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="fr.antenia.svncommittemplates.Settings"/>
+        <applicationConfigurable instance="fr.antenia.svncommittemplates.SettingsConfigurable"
+                                 displayName="Svn Commit Templates"/>
+        <vcs.commitMessageProvider implementation="fr.antenia.svncommittemplates.MergeCommitMessageProvider"/>
+    </extensions>
+
+    <actions>
+        <action id="svn-commit-templates.SelectCommitTemplateAction"
+                class="fr.antenia.svncommittemplates.SelectCommitTemplateAction"
+                icon="AllIcons.Actions.ListFiles"
+                text="Select Commit Template"
+                description="Select commit template">
+            <add-to-group group-id="Vcs.MessageActionGroup" anchor="before"
+                          relative-to-action="Vcs.ShowMessageHistory"/>
+        </action>
+    </actions>
+
+</idea-plugin>
