@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugins>
+    <plugin
+            id="fr.antenia.svn-commit-templates"
+            url="https://github.com/antenia-lhubert/intellij-svn-commit-templates/releases/download/v1.0.1/svn-commit-templates-1.0.1-SNAPSHOT.zip"
+            version="1.0.1">
+        <idea-version since-build="242"/>
+    </plugin>
+</plugins>
+
